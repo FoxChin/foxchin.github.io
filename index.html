@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Accordion Menu Using jQuery</title>
+  <script type="text/javascript" language="javascript" src="jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" language="javascript" src="naccordion.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    //slides the element with class "menu_body" when paragraph with class "menu_head" is clicked
+    $("#firstpane p.menu_head").click(function() {
+      $(this).css({
+        backgroundImage: "url(down.png)"
+      }).next("div.menu_body").slideToggle(300).siblings("div.menu_body").slideUp("slow");
+      $(this).siblings().css({
+        backgroundImage: "url(left.png)"
+      });
+    });
+
+    // var setting = {
+    //   menuList:[{"menu_head":"Header-1","menu_body":[{"title":"Item-1"},{"title":"Item-2"},{"title":"Item-3"}]}]
+    // };
+    var test = $.fn.nAccordion();
+
+  });
+  </script>
+  <style type="text/css">
+  body {
+    margin: 10px auto;
+    font: 75%/120% Verdana, Arial, Helvetica, sans-serif;
+  }
+
+/*  .menu_list {
+    width: 250px;
+  }*/
+
+  .menu_head {
+    padding: 5px 10px;
+    cursor: pointer;
+    position: relative;
+    margin: 1px;
+    font-weight: bold;
+    background: #eef4d3 url(left.png) center right no-repeat;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .menu_body {
+    display: none;
+  }
+
+  .menu_body a {
+    display: block;
+    color: #006699;
+    background-color: #EFEFEF;
+    padding-left: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .menu_body a:hover {
+    color: #000000;
+    text-decoration: underline;
+  }
+  </style>
+</head>
+
+<body>
+  <div style="float:left">
+    <!--This is the first division of left-->
+    <p><strong>&nbsp;only one unfold </strong></p>
+    <div id="firstpane" class="menu_list">
+      <!--Code for menu starts here-->
+      <p class="menu_head">Header-1</p>
+      <div class="menu_body">
+        <a href="#">Link-1</a>
+        <a href="#">Link-2</a>
+        <a href="#">Link-3</a>
+      </div>
+      <p class="menu_head">Header-2</p>
+      <div class="menu_body">
+        <a href="#">Link-1</a>
+        <a href="#">Link-2</a>
+        <a href="#">Link-3</a>
+      </div>
+      <p class="menu_head">Header-3</p>
+      <div class="menu_body">
+        <a href="#">Link-1</a>
+        <a href="#">Link-2</a>
+        <a href="#">Link-3</a>
+      </div>
+    </div>
+    <!--Code for menu ends here-->
+  </div>
+  <div style="float:left; margin-left:20px;">
+    <!--This is the second division of right-->
+    <p><strong>multi unfold</strong></p>
+    <div class="menu_list" id="secondpane">
+      <!--Code for menu starts here-->
+    </div>
+    <!--Code for menu ends here-->
+  </div>
+</body>
+
+</html>
